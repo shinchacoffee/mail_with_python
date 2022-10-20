@@ -1,0 +1,141 @@
+\documentclass{article}
+\usepackage[margin=12mm]{geometry}
+\usepackage{hyperref}
+
+\usepackage[
+% school,
+% simplified
+]{pgf-umlcd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{listings}
+\usepackage{color}
+\definecolor{listinggray}{gray}{0.92}
+\lstset{ %
+	language=[LaTeX]TeX,
+	breaklines=true,
+	frame=single,
+	% frameround=tttt,
+	basicstyle=\footnotesize\ttfamily,
+	backgroundcolor=\color{listinggray},
+	keywordstyle=\color{blue}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	anchorcolor=black,
+	citecolor=olive,
+	filecolor=magenta,
+	menucolor=red,
+	urlcolor=blue
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\demo}[2][1]{
+	\begin{minipage}{.49\linewidth}
+		\centering
+		\resizebox{#1\linewidth}{!}{
+			\input{demo/#2}
+		}
+	\end{minipage}
+	\hspace{0.01\linewidth}
+	\begin{minipage}{.5\linewidth}
+		\lstinputlisting{demo/#2}
+	\end{minipage}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\example}[1]{
+	\resizebox{\linewidth}{!}{
+		\input{demo/#1}
+	}
+	\lstinputlisting{demo/#1}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\begin{document}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\title{Class diagram for mailing script}
+	\author{shinchacoffee}
+	\date{\today{}~(v 0.0.1)}
+	\maketitle
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	\begin{abstract}
+		Diagram for short script in python which can be used to send e-mails straight from command line. Made using \texttt{pgf-umlcd} made by Xu Yuan \href{https://github.com/xuyuan/pgf-umlcd}{github.com/xuyuan/pgf-umlcd}.
+	\end{abstract}
+	
+	%\tableofcontents
+	
+	\section{Class diagram}
+	
+	\begin{tikzpicture}
+		\begin{class}[text width=4.5cm]{SendMail}{-5,-5}
+			\attribute{senderMail : String}
+			\attribute{senderPass : String}
+			\attribute{reciverMail : String}
+			\attribute{content : String}
+			\attribute{attachment: String}
+			\attribute{status : String}
+			
+			\operation{getMail (mail : String)}
+			\operation{getPass (password : String)}
+		\end{class}
+	
+		\begin{interface}[text width=3.5cm]{UserInput}{9,-4}
+			\attribute{singleInput : String}
+		\end{interface}
+		
+		\begin{class}[text width=5cm]{Credentials}{2,0}
+			\implement{UserInput}
+			\inherit{SendMail}
+			\attribute{senderAddress : String}
+			\attribute{senderPassword : String}
+			
+			\operation{getMail (mail : String)}
+			\operation{getPass (password : String)}
+		\end{class}
+	
+		\begin{class}[text width=5cm]{Addressee}{2,-3}
+			\implement{UserInput}
+			\inherit{SendMail}
+			\attribute{addresseeAddress : String}
+			
+			\operation{getMail (mail : String)}
+			\operation{getPass (password : String)}
+		\end{class}
+	
+		\begin{class}[text width=5cm]{MailContent}{2,-6}
+			\implement{UserInput}
+			\inherit{SendMail}
+			\attribute{mailContent : String}
+			
+			\operation{getMail (mail : String)}
+			\operation{getPass (password : String)}
+		\end{class}
+		
+		\begin{class}[text width=5cm]{Attachment}{2,-9}
+			\implement{UserInput}
+			\inherit{SendMail}
+			\attribute{attachmentFilePath : String}
+			
+			\operation{getMail (mail : String)}
+			\operation{getPass (password : String)}
+		\end{class}
+		
+		\begin{class}[text width=5cm]{Sender}{2,-12}
+			\inherit{SendMail}
+			\attribute{status : String}
+			
+			\operation{getMail (mail : String)}
+			\operation{getPass (password : String)}
+		\end{class}
+
+	\end{tikzpicture}
+	
+\end{document}
