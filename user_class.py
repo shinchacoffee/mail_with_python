@@ -4,7 +4,7 @@ class User:
     def __init__(self):
         self.address = "default@gmail.com"
         self.password = "admin1"
-        self.state = ("default", "default")
+        self.addr_state, self.pass_state = "default_mail", "default_pass"
 
     def get_address(self):
         #string = user_input()
@@ -27,4 +27,7 @@ class User:
         self.address = address
 
     def set_password(self, password):
-        self.password = password
+        if password.is_string:
+            self.password = password
+        else:
+            self.pass_state = "wrong_pass"
