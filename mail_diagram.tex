@@ -75,7 +75,7 @@
 	\section{Class diagram}
 	
 	\begin{tikzpicture}
-		\begin{class}[text width=4.5cm]{SendMail}{-5,-5}
+		\begin{class}[text width=4.5cm]{Message}{-5,-5}
 			\attribute{senderMail : String}
 			\attribute{senderPass : String}
 			\attribute{reciverMail : String}
@@ -98,10 +98,10 @@
 			\operation{getContent (path : String)}
 		\end{interface}
 		
-		\begin{class}[text width=5cm]{Credentials}{2,0}
+		\begin{class}[text width=5cm]{User}{2,0}
 			\implement{UserInput}
 			\implement{FileExtractor}
-			\inherit{SendMail}
+			\inherit{Message}
 			\attribute{senderAddress : String}
 			\attribute{senderPassword : String}
 			
@@ -114,7 +114,7 @@
 		\begin{class}[text width=5cm]{Addressee}{2,-4}
 			\implement{UserInput}
 			\implement{FileExtractor}
-			\inherit{SendMail}
+			\inherit{Message}
 			\attribute{addresseeAddress : String}
 			
 			\operation{getAddress ()}
@@ -124,7 +124,7 @@
 		\begin{class}[text width=5cm]{MailContent}{2,-7}
 			\implement{UserInput}
 			\implement{FileExtractor}
-			\inherit{SendMail}
+			\inherit{Message}
 			\attribute{mailContent : String}
 			
 			\operation{getTxt ()}
@@ -134,7 +134,7 @@
 		\begin{class}[text width=5cm]{Attachment}{2,-10}
 			\implement{UserInput}
 			\implement{FileExtractor}
-			\inherit{SendMail}
+			\inherit{Message}
 			\attribute{attachmentFilePath : String}
 			
 			\operation{getPath ()}
@@ -142,7 +142,7 @@
 		\end{class}
 		
 		\begin{class}[text width=5cm]{Sender}{2,-13}
-			\inherit{SendMail}
+			\inherit{Message}
 			\attribute{status : String}
 			
 			\operation{sendMail (parameters : String)}
