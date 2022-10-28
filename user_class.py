@@ -13,10 +13,12 @@ class User:
                     #r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b' found on internet... : <
         if re.fullmatch(mail_templ, string):
             address = string
+            address_state = "ok"
         else:
-            print("Invalid e-mail address.")
+            print("Invalid e-mail address. Address set to asd@asd.asd")
             address = "asd@asd.asd"
-        return address
+            address_state = "wrong mail"
+        return address, address_state
 
     def get_password(self):
         #string = user_input()
@@ -24,10 +26,12 @@ class User:
         return string
 
     def set_address(self, address):
-        self.address = address
+        self.address = address(0)
+        self.addr_state = address(1)
 
     def set_password(self, password):
         if password.is_string:
             self.password = password
+            self.pass_state = "ok"
         else:
-            self.pass_state = "wrong_pass"
+            self.pass_state = "wrong pass"
