@@ -97,9 +97,14 @@
 			
 			\operation{getContent (path : String)}
 		\end{interface}
+	
+		\begin{class}[text width=4.5cm]{MailChecker}{9,-1}
+			\attribute{state : bool}
+		\end{class}
 		
 		\begin{class}[text width=5cm]{User}{2,0}
 			\implement{UserInput}
+			\implement{MailChecker}
 			\implement{FileExtractor}
 			\inherit{Message}
 			\attribute{senderAddress : String}
@@ -113,6 +118,7 @@
 	
 		\begin{class}[text width=5cm]{Addressee}{2,-4}
 			\implement{UserInput}
+			\implement{MailChecker}
 			\implement{FileExtractor}
 			\inherit{Message}
 			\attribute{addresseeAddress : String}
