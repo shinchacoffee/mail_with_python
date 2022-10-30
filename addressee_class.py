@@ -9,9 +9,11 @@ class Addressee:
     def get_address(self):
         #string = user_input()
         string = input('Please enter your e-mail address: ')
-        state_of_mail = MailChecker(string)
+        checking_mail = MailChecker(string)
+        state_of_mail = checking_mail.state
 
         #it is red-lighting my MailChecker class... not sure why : <
+        #it is not red-lighting when def of this class is in this file... : <<<< not sure what to do
 
         if state_of_mail:
             address = string
