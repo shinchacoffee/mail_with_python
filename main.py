@@ -5,7 +5,7 @@ import message_class
 #import addressee_class
 #import sender_class
 
-my_new_message = Message()
+my_new_message = message_class.Message()
 
 my_new_message.constructMail()
 
