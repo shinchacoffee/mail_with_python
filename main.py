@@ -8,6 +8,7 @@ import message_class
 # = input()
 
 
+
 my_new_message = message_class.Message()
 
 #if input is only e-mail address then omitt construct_mail

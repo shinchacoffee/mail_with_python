@@ -19,4 +19,3 @@ class Message:
 
     def sendMail(self):
         self.status = "mail sent successfully"
-        
