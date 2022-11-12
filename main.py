@@ -7,6 +7,8 @@ import message_class
 
 my_new_message = message_class.Message()
 
-my_new_message.constructMail()
+#if input is only e-mail address then omitt construct_mail
+#if my_new_message.status = "need more information" ...
 
+my_new_message.constructMail()
 my_new_message.sendMail()
