@@ -8,7 +8,7 @@ class Message:
 
     def __init__(self):
         self.senderMail = "nonusablemailacc@gmail.com"
-        self.senderPass = "passwordfornonusbalemailacc" #should be somhowe encrypted... or at least not in git?
+        self.senderPass = "passwordfornonusbalemailacc" #should be somehow encrypted... or at least not in a git?
         self.receiverMail = "nonusablemailacc@gmail.com"
         self.content = "Please phone me as soon as possible."
         self.attachment = None
