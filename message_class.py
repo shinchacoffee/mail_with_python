@@ -6,10 +6,10 @@ import user_class
 
 class Message:
 
-    def __init__(self):
+    def __init__(self, mail_order):
         self.senderMail = "nonusablemailacc@gmail.com"
         self.senderPass = "passwordfornonusbalemailacc" #should be somehow encrypted... or at least not in a git?
-        self.receiverMail = "nonusablemailacc@gmail.com"
+        self.receiverMail = mail_order
         self.content = "Please phone me as soon as possible."
         self.attachment = None
         self.status = "not sent"

@@ -5,14 +5,12 @@ import message_class
 #import addressee_class
 #import sender_class
 
-# = input()
+mail_order = input('Enter target e-mail for default message or e-mail+ for custom one: ')
 
+my_new_message = message_class.Message(mail_order)
 
+if my_new_message.status == "remake": #maybe it can be implemented in terms of exceptions?
+    my_new_message.constructMail()
 
-my_new_message = message_class.Message()
-
-#if input is only e-mail address then omitt construct_mail
-#if my_new_message.status = "need more information" ...
-
-my_new_message.constructMail()
-my_new_message.sendMail()
+if my_new_message.status == "ready to send":
+    my_new_message.sendMail()
