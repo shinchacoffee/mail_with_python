@@ -1,4 +1,4 @@
-import user_class
+#import user_class
 #import content_class
 #import attachment_class
 #import addressee_class
