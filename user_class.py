@@ -2,10 +2,13 @@ import re
 import check_mail
 class User:
 
-    def __init__(self):
-        self.address = "default@gmail.com"
-        self.password = "admin1"
-        self.addr_state, self.pass_state = "default_mail", "default_pass"
+    def __init__(self, custom_address = False):
+        if not custom_address:
+            self.address = "nonusablemailacc@gmail.com"
+            self.password = "passwordfornonusbalemailacc" #should be somehow encrypted... or at least not in a git?
+        else:
+            self.address, self.addr_state = self.get_address()
+            self.password, self.pass_state = self.get_password()
 
     def get_address(self):
         string = input('Please enter your e-mail address: ')
@@ -20,17 +23,5 @@ class User:
         return address, address_state
 
     def get_password(self):
-        #string = user_input()
         string = input('Please enter your e-mail password: ')
-        return string
-
-    def set_address(self, address):
-        self.address = address(0)
-        self.addr_state = address(1)
-
-    def set_password(self, password):
-        if password.is_string:
-            self.password = password
-            self.pass_state = "ok"
-        else:
-            self.pass_state = "wrong pass"
+        return string, "ok"
