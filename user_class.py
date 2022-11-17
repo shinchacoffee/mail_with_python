@@ -1,5 +1,6 @@
 import re
 import check_mail
+import check_pass
 class User:
 
     def __init__(self, custom_address = False):
@@ -24,4 +25,11 @@ class User:
 
     def get_password(self):
         string = input('Please enter your e-mail password: ')
-        return string, "ok"
+        is_it_proper_pass = check_pass.PassChecker(string)
+        if is_it_proper_pass:
+            password = string
+            password_state = "ok"
+        else:
+            password = "pas"
+            password_state = "wrong"
+        return password, password_state
