@@ -8,8 +8,21 @@ import check_mail
 class Message:
 
     def __init__(self, mail_order):
-        self.senderMail = "nonusablemailacc@gmail.com"
-        self.senderPass = "passwordfornonusbalemailacc" #should be somehow encrypted... or at least not in a git?
+
+        userData = user_class.User()
+        if userData.addr_state and userData.pass_state:
+            self.senderMail = userData.address
+            self.senderPass = userData.password
+        else:
+            userData.get_address()
+            userData.get_password()
+            if userData.addr_state and userData.pass_state:  # not sure if this is the way since also methods get_. also return values
+                self.senderMail = userData.address
+                self.senderPass = userData.password
+            else:
+                print(
+                    "User mail or password are not a proper ones.")  # probably want to end here a script or go to exception or sth
+
         self.is_it_only_mail = check_mail.MailChecker(mail_order)
         if self.is_it_only_mail:
             self.receiverMail = mail_order
