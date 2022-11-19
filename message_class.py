@@ -13,15 +13,18 @@ class Message:
         if userData.addr_state and userData.pass_state:
             self.senderMail = userData.address
             self.senderPass = userData.password
+            self.user_data_state = True
         else:
             userData.get_address()
             userData.get_password()
+            self.senderMail = userData.address
+            self.senderPass = userData.password
             if userData.addr_state and userData.pass_state:  # not sure if this is the way since also methods get_. also return values
-                self.senderMail = userData.address
-                self.senderPass = userData.password
+                print("User data set properly")
+                self.user_data_state = True
             else:
-                print(
-                    "User mail or password are not a proper ones.")  # probably want to end here a script or go to exception or sth
+                print("User mail or password are not a proper ones.")  # probably want to end here a script or go to exception or sth
+                self.user_data_state = False
 
         self.is_it_only_mail = check_mail.MailChecker(mail_order)
         if self.is_it_only_mail:
@@ -36,7 +39,26 @@ class Message:
             self.status = "custom order"
 
     def constructMail(self):
+
+        if not self.user_data_state:
+            userData = user_class.User()
+            userData.get_address()
+            userData.get_password()
+            self.senderMail = userData.address
+            self.senderPass = userData.password
+            if userData.addr_state and userData.pass_state:  # not sure if this is the way since also methods get_. also return values
+                print("User data set properly")
+                self.user_data_state = True
+            else:
+                print(
+                    "User mail or password are not a proper ones.")  # probably want to end here a script or go to exception or sth
+                self.user_data_state = False #it should contain some error break or exception... so not to loop or do in vain
+
+        string = input("Enter the message content")
+        self.content = string
+        print("Mail properly constructed")
         self.status = "constructed"
 
     def sendMail(self):
+        print("Mail sent successfully")
         self.status = "mail sent successfully"

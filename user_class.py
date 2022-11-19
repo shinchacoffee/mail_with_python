@@ -32,6 +32,6 @@ class User:
             password = string
             password_state = True
         else:
-            password = "pas"
+            password = None
             password_state = False
         return password, password_state
