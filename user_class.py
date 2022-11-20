@@ -1,13 +1,13 @@
-import re
 import check_mail
 import check_pass
 class User:
 
     def __init__(self, custom_address = False):
+        userdatafile = open(".usermaildata", "r")
         if not custom_address:
-            self.address = "nonusablemailacc@gmail.com"
+            self.address = userdatafile.readline()
             self.addr_state = True
-            self.password = "passwordfornonusbalemailacc" #should be somehow encrypted... or at least not in a git?
+            self.password = userdatafile.readline() #should be somehow encrypted?
             self.pass_state = True
         else:
             self.address, self.addr_state = self.get_address()
