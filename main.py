@@ -9,7 +9,7 @@ mail_order = input('Enter target e-mail for default message or e-mail+ for custo
 
 my_new_message = message_class.Message(mail_order)
 
-if my_new_message.status == "remake": #maybe it can be implemented in terms of exceptions?
+if my_new_message.status == "custom order": #maybe it can be implemented in terms of exceptions?
     my_new_message.constructMail()
 
 if my_new_message.status == "ready to send":
